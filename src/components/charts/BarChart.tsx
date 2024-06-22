@@ -17,7 +17,6 @@ export default function BarChart({ data, categories, categoryName }: BarChartPro
     },
     chart: {
       type: 'column',
-      width: 1200,
     },
     yAxis: {
       title: {

@@ -14,7 +14,6 @@ export default function PieChart({ data }: PieChartProps) {
     },
     chart: {
       type: 'pie',
-      width: '1000',
     },
     series: [
       {
