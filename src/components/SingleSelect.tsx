@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useEffect } from 'react';
 import { SelectMenuProps } from '../types';
 
-export interface SingleSelectProps {
+interface SingleSelectProps {
   data: SelectMenuProps[];
   handleChange: (e: string) => void;
 }

@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import { ChartData } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 
-export interface BarChartProps {
+interface BarChartProps {
   data: ChartData[];
   categories: string[];
   categoryName: string;

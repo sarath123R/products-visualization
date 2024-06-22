@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useEffect, useState } from 'react';
 import { SelectMenuProps } from '../types';
 
-export interface MUISelectProps {
+interface MUISelectProps {
   disabled: boolean;
   data: SelectMenuProps[];
   handleChange: (e: string[]) => void;

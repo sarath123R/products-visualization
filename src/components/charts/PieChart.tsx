@@ -3,7 +3,7 @@ import Highcharts from 'highcharts/highstock';
 import { ChartData } from '../../types';
 import { CONSTANTS } from '../../utils/constants';
 
-export interface PieChartProps {
+interface PieChartProps {
   data: ChartData[];
 }
 export default function PieChart({ data }: PieChartProps) {

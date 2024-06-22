@@ -8,7 +8,7 @@ import BarChart from '../components/charts/BarChart';
 import { CONSTANTS } from '../utils/constants';
 import { ChartData, Product, ProductRootObject, SelectMenuProps } from '../types';
 
-export interface Categories {
+interface Categories {
   name: string;
   url: string;
   slug?: string;
