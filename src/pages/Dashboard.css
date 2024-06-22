@@ -17,7 +17,7 @@
 }
 
 .form-width {
-  width: 20%;
+  width: 22%;
   height: 100%;
   border: 1px solid black;
   padding: 1em;
@@ -42,7 +42,7 @@
 }
 
 .chart-area {
-  width: 80%;
+  width: 78%;
   height: 100%;
   display: flex;
 }
@@ -52,5 +52,5 @@
   bottom: 2em !important;
   float: left;
   width: 70%;
-  left: 1.5em;
+  left: 3em;
 }
