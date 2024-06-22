@@ -1,7 +1,7 @@
-import * as React from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import { ChartData } from '../../types';
+import { CONSTANTS } from '../../utils/constants';
 
 export interface BarChartProps {
   data: ChartData[];
@@ -9,10 +9,10 @@ export interface BarChartProps {
   categoryName: string;
 }
 
-export default function Bar({ data, categories, categoryName }: BarChartProps) {
+export default function BarChart({ data, categories, categoryName }: BarChartProps) {
   const options: Highcharts.Options = {
     title: {
-      text: 'Products in selected Category',
+      text: CONSTANTS.PRODUCTS_SELECTED_CATEGORY,
       align: 'left',
     },
     chart: {

@@ -1,10 +1,10 @@
 import './Dashboard.css';
 import SingleSelect from '../components/SingleSelect';
-import Pie from '../components/charts/Pie';
+import PieChart from '../components/charts/PieChart';
 import MultiSelect from '../components/MultiSelect';
 import { Button, CircularProgress } from '@mui/material';
 import { Suspense, useEffect, useState } from 'react';
-import Bar from '../components/charts/Bar';
+import BarChart from '../components/charts/BarChart';
 import { CONSTANTS } from '../utils/constants';
 import { ChartData, Product, ProductRootObject, SelectMenuProps } from '../types';
 
@@ -138,9 +138,13 @@ export default function Dashboard() {
             {chartData.length === 0 ? (
               <CircularProgress className='loader' />
             ) : !isBarChartVisible ? (
-              <Pie data={chartData} />
+              <PieChart data={chartData} />
             ) : (
-              <Bar data={chartData} categories={selectedProducts} categoryName={selectedCategory} />
+              <BarChart
+                data={chartData}
+                categories={selectedProducts}
+                categoryName={selectedCategory}
+              />
             )}
           </Suspense>
         </section>

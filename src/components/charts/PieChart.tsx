@@ -1,14 +1,15 @@
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts/highstock';
 import { ChartData } from '../../types';
+import { CONSTANTS } from '../../utils/constants';
 
 export interface PieChartProps {
   data: ChartData[];
 }
-export default function Pie({ data }: PieChartProps) {
+export default function PieChart({ data }: PieChartProps) {
   const options: Highcharts.Options = {
     title: {
-      text: 'All Categories',
+      text: CONSTANTS.ALL_CATEGORIES,
       align: 'left',
     },
     chart: {
