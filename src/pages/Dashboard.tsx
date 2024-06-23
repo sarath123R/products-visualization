@@ -3,7 +3,7 @@ import SingleSelect from '../components/SingleSelect';
 import PieChart from '../components/charts/PieChart';
 import MultiSelect from '../components/MultiSelect';
 import { Button, CircularProgress } from '@mui/material';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import BarChart from '../components/charts/BarChart';
 import { CONSTANTS } from '../utils/constants';
 import { ChartData, Product, ProductRootObject, SelectMenuProps } from '../types';
@@ -23,6 +23,7 @@ export default function Dashboard() {
   const [multiSelectDisabled, setMultiSelectDisabled] = useState<boolean>(true);
   const [runReportBtnDisabled, setRunReportBtnDisabled] = useState<boolean>(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const selectedProductsRef = useRef<string[]>([]);
 
   useEffect(() => {
     //get product categories
@@ -38,6 +39,14 @@ export default function Dashboard() {
     };
     categoryNames.length === 0 && getCategories();
   }, [categoryNames]);
+
+  useEffect(() => {
+    //Run Report button disable/enable
+    const selectedProductsLen = selectedProducts.length;
+    selectedProductsRef.current.length === selectedProductsLen || selectedProductsLen === 0
+      ? setRunReportBtnDisabled(true)
+      : setRunReportBtnDisabled(false);
+  }, [selectedProducts]);
 
   const categoriesData = (data: Categories[]): void => {
     const pie: ChartData[] = [];
@@ -68,8 +77,6 @@ export default function Dashboard() {
   };
 
   const onMultiSelectChange = (selectedProducts: string[]): void => {
-    //Run report button disabling
-    selectedProducts.length > 0 ? setRunReportBtnDisabled(false) : setRunReportBtnDisabled(true);
     setSelectedProducts(selectedProducts);
   };
 
@@ -90,6 +97,7 @@ export default function Dashboard() {
       .forEach((e) => {
         generatedReport.push({ name: e.label, y: Number(e.value) });
       });
+    selectedProductsRef.current = selectedProducts;
     setTimeout(() => {
       setChartData(generatedReport);
       setBarChartVisible(true);
@@ -100,6 +108,7 @@ export default function Dashboard() {
   const clearInputs = (): void => {
     setCategoryNames([]);
     setProductNames([]);
+    selectedProductsRef.current = [];
     setMultiSelectDisabled(true);
     setRunReportBtnDisabled(true);
     setBarChartVisible(false);
